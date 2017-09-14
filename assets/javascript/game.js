@@ -77,27 +77,28 @@ document.onkeypress = function (event) {
 	
 
 
-// Create if/then event that compares user guess to computer guess. 
-// If user guess equals computer guess, add to win counter. Reset computer guess. 
+// Create if/then event that compares user guess to computer guess.  
+
  if (guessesLeft > 0){
+
+// If user guess is the same as the computer guess then wins increase by 1,
+// and gueses left and guesses so far reset.
             if (userGuess == computerGuess){
                 wins++;
-                document.querySelector('#wins').innerHTML = " " + wins;
+                document.querySelector("#wins").innerHTML = " " + wins;
                 alert("You are a winner!");
                 reset();
             }
-
+// If user guesses equal 0 then losses increase by 1 and game is reset. 
             else if(guessesLeft == 0){
             losses++;
-            document.querySelector('#losses').innerHTML = " " + losses;
+            document.querySelector("#losses").innerHTML = " " + losses;
             alert("Sorry, it's not your day.");
             
             reset();
         }
-}
 
-};
-
+    }
 
 
 
@@ -105,4 +106,7 @@ document.onkeypress = function (event) {
 
 
 
-// If user guess does not equal computer guess, decrease guessleft by 1, increaase guesssofar by 1. If user guesses equal 9, increase loss by 1. 
+
+
+
+
