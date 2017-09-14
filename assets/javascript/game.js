@@ -52,7 +52,7 @@ var reset = function() {
   
 
   updateguessesLeft();
-  updateguessesSoFar();
+  updateGuessesSoFar();
 }
 
 
@@ -83,7 +83,7 @@ document.onkeypress = function (event) {
 
 // If user guess is the same as the computer guess then wins increase by 1,
 // and gueses left and guesses so far reset.
-            if (userGuess == computerGuess){
+            if (userKeyPress == computerGuess){
                 wins++;
                 document.querySelector("#wins").innerHTML = " " + wins;
                 alert("You are a winner!");
@@ -99,6 +99,8 @@ document.onkeypress = function (event) {
         }
 
     }
+
+};
 
 
 
