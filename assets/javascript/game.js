@@ -14,7 +14,7 @@ var guessesSoFar = [];
 var computerGuess;
 
 var randomNumber = Math.floor(Math.random() * alphabet.length);
-console.log("random number: ", randomNumber);
+// console.log("random number: ", randomNumber);
 
 
 function randomGuess() {
@@ -22,25 +22,87 @@ function randomGuess() {
 	computerGuess = alphabet[randomNumber];
 
 
-	console.log("computer guess: ", computerGuess);
+	 console.log("computer guess: ", computerGuess);
+
+
 
 }
 
 randomGuess();
 
 
-// Creat Variable for User guess
+// Create variables  and functions to update counters.
+
+var updateguessesLeft = function() {
+
+	document.querySelector("#guesses-left").innerHTML = " " + guessesLeft;
+}
+
+var updateGuessesSoFar = function() {
+
+document.querySelector("#guesses-so-far").innerHTML = " " + guessesSoFar.join(', ');
+};
+
+
+
+// Create reset function - don't refresh page
+var reset = function() {
+  guessesLeft = 9;
+  guessesSoFar = [];
+  
+
+  updateguessesLeft();
+  updateguessesSoFar();
+}
+
+
+
+// Create Variable for User guess
 
 var userGuess = "";
 
-console.log
-
 // Capture key press and assign it to user guess. 
 
-// Create function that logs computer guess
+document.onkeypress = function (event) {
 
-// Create key event that logs user guess
-// Create if/then event that compares user guess to computer guess. If user guess equals computer guess, add to win counter. Reset computer guess.
+
+	var userKeyPress = String.fromCharCode(event.keyCode).toLowerCase();
+
+	console.log("user keypress:", userKeyPress);
+	// push userKeypress to guessSoFar
+
+	guessesSoFar.push(userKeyPress);
+	updateGuessesSoFar();
+	updateguessesLeft();
+	
+
+
+// Create if/then event that compares user guess to computer guess. 
+// If user guess equals computer guess, add to win counter. Reset computer guess. 
+ if (guessesLeft > 0){
+            if (userGuess == computerGuess){
+                wins++;
+                document.querySelector('#wins').innerHTML = " " + wins;
+                alert("You are a winner!");
+                reset();
+            }
+
+            else if(guessesLeft == 0){
+            losses++;
+            document.querySelector('#losses').innerHTML = " " + losses;
+            alert("Sorry, it's not your day.");
+            
+            reset();
+        }
+}
+
+};
+
+
+
+
+
+
+
+
 // If user guess does not equal computer guess, decrease guessleft by 1, increaase guesssofar by 1. If user guesses equal 9, increase loss by 1. 
-// Create counter that countsdown guesses left
-// Create counter for guesses so far
